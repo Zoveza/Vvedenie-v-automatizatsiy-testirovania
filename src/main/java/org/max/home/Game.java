@@ -1,14 +1,12 @@
 package org.max.home;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Класс для реализации игры
  */
 public class Game {
-
     private Player player;
     private List<Door> doors = new ArrayList<>();
 
@@ -17,7 +15,7 @@ public class Game {
         this.doors = doors;
     }
 
-    public Door round (int door) {
+    public Door round(int door) {
         if (!player.getRisk()) return doors.get(door);
         else {
             doors.remove(doors.get(door));
@@ -25,5 +23,19 @@ public class Game {
         }
     }
 
+    public void initDoors() {
+        doors = new ArrayList<>();
+        doors.add(new Door(true));
+        doors.add(new Door(false));
+        doors.add(new Door(false));
+    }
 
+    public Game() {
+        this.player = new Player("Misha", true);
+        this.doors = doors;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
 }
